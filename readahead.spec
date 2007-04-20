@@ -3,7 +3,7 @@
 # - some missing/bad BR:
 # readahead-collector.c:35:21: auparse.h: No such file or directory
 Summary:	Read a preset list of files into memory
-Summary(pl.UTF-8):	Czyta liste plików do pamięci 
+Summary(pl.UTF-8):	Czyta listę plików do pamięci 
 Name:		readahead
 Version:	1.4.1
 Release:	0.1
