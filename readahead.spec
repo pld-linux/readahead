@@ -1,7 +1,5 @@
 # TODO
 # - maybe some scripts (still) usable here: http://bugs.gentoo.org/show_bug.cgi?id=64724
-# - some missing/bad BR:
-# readahead-collector.c:35:21: auparse.h: No such file or directory
 Summary:	Read a preset list of files into memory
 Summary(pl.UTF-8):	Czyta listę plików do pamięci 
 Name:		readahead
@@ -15,7 +13,7 @@ Source0:	http://people.redhat.com/kzak/readahead/%{name}-%{version}.tar.bz2
 Source1:	default.early
 Source2:	default.later
 URL:		https://hosted.fedoraproject.org/projects/readahead
-BuildRequires:	audit-libs-devel
+BuildRequires:	audit-libs-devel >= 1.5
 BuildRequires:	e2fsprogs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
