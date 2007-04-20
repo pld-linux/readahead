@@ -1,4 +1,5 @@
 # TODO
+# - maybe some scripts (still) usable here: http://bugs.gentoo.org/show_bug.cgi?id=64724
 # - some missing/bad BR:
 # readahead-collector.c:35:21: auparse.h: No such file or directory
 Summary:	Read a preset list of files into memory
@@ -33,7 +34,10 @@ cp -a %{SOURCE2} lists
 %configure
 
 %{__make}
-%{__make} rpm-lists-rebuild RPM_LIB="%{_lib}" RPM_ARCH="%{_arch}" FILES="default.early default.later"
+%{__make} rpm-lists-rebuild \
+	RPM_LIB="%{_lib}" \
+	RPM_ARCH="%{_arch}" \
+	FILES="default.early default.later"
 
 %install
 rm -rf $RPM_BUILD_ROOT
