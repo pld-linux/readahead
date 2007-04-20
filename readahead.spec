@@ -3,6 +3,7 @@
 # - some missing/bad BR:
 # readahead-collector.c:35:21: auparse.h: No such file or directory
 Summary:	Read a preset list of files into memory
+Summary(pl.UTF-8):	Czyta liste plików do pamięci 
 Name:		readahead
 Version:	1.4.1
 Release:	0.1
@@ -24,6 +25,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 readahead reads the contents of a list of files into memory, which
 causes them to be read from cache when they are actually needed. Its
 goal is to speed up the boot process.
+
+%description -l pl.UTF-8
+readahead czyta zawartość plików z listy do pamięci. Powoduje to
+czytanie ich z pamięci cache gdy są aktualnie potrzebne. Dzięki temu
+przyspieszany jest proces startowania systemu.
 
 %prep
 %setup -q
