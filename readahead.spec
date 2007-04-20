@@ -1,3 +1,6 @@
+# TODO
+# - some missing/bad BR:
+# readahead-collector.c:35:21: auparse.h: No such file or directory
 Summary:	Read a preset list of files into memory
 Name:		readahead
 Version:	1.4.1
@@ -14,6 +17,8 @@ BuildRequires:	audit-libs-devel
 BuildRequires:	e2fsprogs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_sbindir	/sbin
+
 %description
 readahead reads the contents of a list of files into memory, which
 causes them to be read from cache when they are actually needed. Its
@@ -21,12 +26,11 @@ goal is to speed up the boot process.
 
 %prep
 %setup -q
-cp -f -t ./lists/ %{SOURCE1}
-cp -f -t ./lists/ %{SOURCE2}
+cp -a %{SOURCE1} lists
+cp -a %{SOURCE2} lists
 
 %build
-%configure \
-	--sbindir=/sbin
+%configure
 
 %{__make}
 %{__make} rpm-lists-rebuild RPM_LIB="%{_lib}" RPM_ARCH="%{_arch}" FILES="default.early default.later"
@@ -39,25 +43,26 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-%defattr(644,root,root,755)
-%doc COPYING README lists/README.lists
-%attr(755,root,root) /etc/cron.daily/readahead.cron
-%attr(755,root,root) /etc/rc.d/init.d/readahead_later
-%attr(755,root,root) /etc/rc.d/init.d/readahead_early
-%attr(644,root,root) %config(noreplace) %{_sysconfdir}/readahead.conf
-%dir %{_sysconfdir}/readahead.d
-%attr(644,root,root) %config %{_sysconfdir}/readahead.d/default.early
-%attr(644,root,root) %config %{_sysconfdir}/readahead.d/default.later
-%attr(755,root,root) %{_sbindir}/readahead
-/sbin/readahead-collector
-
-%preun
-if [ "$1" = "0" ] ; then
- /sbin/chkconfig --del readahead_later
- /sbin/chkconfig --del readahead_early
-fi
-
 %post
 /sbin/chkconfig --add readahead_later
 /sbin/chkconfig --add readahead_early
+
+%preun
+if [ "$1" = "0" ]; then
+	/sbin/chkconfig --del readahead_later
+	/sbin/chkconfig --del readahead_early
+fi
+
+%files
+%defattr(644,root,root,755)
+%doc COPYING README lists/README.lists
+%dir %{_sysconfdir}/readahead.d
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/readahead.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/readahead.d/default.early
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/readahead.d/default.later
+
+%attr(755,root,root) /etc/cron.daily/readahead.cron
+%attr(754,root,root) /etc/rc.d/init.d/readahead_later
+%attr(754,root,root) /etc/rc.d/init.d/readahead_early
+%attr(755,root,root) /usr/sbin/readahead
+%attr(755,root,root) /sbin/readahead-collector
