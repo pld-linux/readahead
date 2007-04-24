@@ -1,7 +1,7 @@
 # TODO
 # - maybe some scripts (still) usable here: http://bugs.gentoo.org/show_bug.cgi?id=64724
 Summary:	Read a preset list of files into memory
-Summary(pl.UTF-8):	Czyta listę plików do pamięci 
+Summary(pl.UTF-8):	Odczyt predefiniowanej listy plików do pamięci 
 Name:		readahead
 Version:	1.4.1
 Release:	0.1
@@ -26,8 +26,8 @@ goal is to speed up the boot process.
 
 %description -l pl.UTF-8
 readahead czyta zawartość plików z listy do pamięci. Powoduje to
-czytanie ich z pamięci cache gdy są aktualnie potrzebne. Dzięki temu
-przyspieszany jest proces startowania systemu.
+czytanie ich z pamięci podręcznej (cache) gdy są faktycznie potrzebne.
+Dzięki temu przyspieszany jest proces startowania systemu.
 
 %prep
 %setup -q
