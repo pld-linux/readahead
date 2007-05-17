@@ -6,7 +6,7 @@ Name:		readahead
 Version:	1.4.1
 Release:	0.1
 Epoch:		1
-License:	GPL
+License:	GPL v2+
 Group:		Base
 Source0:	http://people.redhat.com/kzak/readahead/%{name}-%{version}.tar.bz2
 # Source0-md5:	61436ab8695807f5e24908f080e5a1ae
@@ -45,6 +45,7 @@ cp -a %{SOURCE2} lists
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -63,7 +64,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc COPYING README lists/README.lists
+%doc README lists/README.lists
 %dir %{_sysconfdir}/readahead.d
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/readahead.conf
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/readahead.d/default.early
