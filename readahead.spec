@@ -3,13 +3,13 @@
 Summary:	Read a preset list of files into memory
 Summary(pl.UTF-8):	Odczyt predefiniowanej listy plików do pamięci 
 Name:		readahead
-Version:	1.4.1
+Version:	1.4.3
 Release:	0.1
 Epoch:		1
 License:	GPL v2+
 Group:		Base
 Source0:	http://people.redhat.com/kzak/readahead/%{name}-%{version}.tar.bz2
-# Source0-md5:	61436ab8695807f5e24908f080e5a1ae
+# Source0-md5:	81578defc9a298ae118c7369ef5f5c17
 Source1:	default.early
 Source2:	default.later
 URL:		https://hosted.fedoraproject.org/projects/readahead
@@ -55,9 +55,13 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/chkconfig --add readahead_later
 /sbin/chkconfig --add readahead_early
+%service readahead_early restart
+%service readahead_later restart
 
 %preun
 if [ "$1" = "0" ]; then
+	%service readahead_later stop
+	%service readahead_early stop
 	/sbin/chkconfig --del readahead_later
 	/sbin/chkconfig --del readahead_early
 fi
