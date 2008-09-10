@@ -12,7 +12,7 @@ Source0:	http://people.redhat.com/kzak/readahead/%{name}-%{version}.tar.bz2
 # Source0-md5:	81578defc9a298ae118c7369ef5f5c17
 Source1:	default.early
 Source2:	default.later
-URL:		https://hosted.fedoraproject.org/projects/readahead
+URL:		https://fedorahosted.org/readahead/
 BuildRequires:	audit-libs-devel >= 1.5
 BuildRequires:	e2fsprogs-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
