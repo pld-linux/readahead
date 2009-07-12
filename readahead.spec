@@ -15,6 +15,7 @@ Source2:	default.later
 URL:		https://fedorahosted.org/readahead/
 BuildRequires:	audit-libs-devel >= 1.5
 BuildRequires:	e2fsprogs-devel
+BuildRequires:	libblkid-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
