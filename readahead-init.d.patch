@@ -1,0 +1,12 @@
+--- readahead-1.5.6/scripts/Makefile.am.old	2012-05-18 20:16:42.000000000 +0000
++++ readahead-1.5.6/scripts/Makefile.am	2012-05-18 20:17:14.000000000 +0000
+@@ -1,7 +1,7 @@
+ include $(top_srcdir)/config/include-Makefile.am
+ 
+-dnl sysconfrcdir = $(sysconfdir)/rc.d/init.d
+-dnl dist_sysconfrc_SCRIPTS = readahead_early readahead_later
++sysconfrcdir = $(sysconfdir)/rc.d/init.d
++dist_sysconfrc_SCRIPTS = readahead_early readahead_later
+ 
+ sysconfcrondir = $(sysconfdir)/cron.daily
+ dist_sysconfcron_SCRIPTS = readahead.cron
