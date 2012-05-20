@@ -24,7 +24,7 @@ URL:		https://fedorahosted.org/readahead/
 BuildRequires:	audit-libs-devel >= 1.5
 BuildRequires:	e2fsprogs-devel
 BuildRequires:	libblkid-devel
-BuildRequires:	sed > 4.0
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
@@ -58,8 +58,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/var/lib/readahead
-install %{SOURCE1} $RPM_BUILD_ROOT/var/lib/readahead/
-install %{SOURCE2} $RPM_BUILD_ROOT/var/lib/readahead/
+cp -p %{SOURCE1} $RPM_BUILD_ROOT/var/lib/readahead
+cp -p %{SOURCE2} $RPM_BUILD_ROOT/var/lib/readahead
 
 %find_lang %{name}
 
