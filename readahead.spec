@@ -41,7 +41,7 @@ Dzięki temu przyspieszany jest proces startowania systemu.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -i "s,%{_prefix}%{_sbindir}/readahead,%{_sbindir}/readahead,g" scripts/readahead_*
 
